@@ -52,12 +52,27 @@ class BinarySearchTree {
         if(!found) return undefined;
         return current;
     }
+
+    BFS() {
+        const data = [];
+        const queue = [];
+        let node = this.root;
+        queue.push(this.root);
+        while(queue.length) {
+            node = queue.shift();
+            data.push(node.value);
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right);
+        }
+        return data;
+    }
 }
 
 let tree = new BinarySearchTree();
 tree.insert(10)
-tree.insert(9)
+tree.insert(6)
+tree.insert(15)
+tree.insert(3)
 tree.insert(8)
-tree.insert(9)
-tree.insert(11)
-console.log(tree.find(8));
+tree.insert(20)
+console.log(tree.BFS());
