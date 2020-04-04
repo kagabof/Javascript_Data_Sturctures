@@ -90,16 +90,29 @@ class BinarySearchTree {
         traverse(this.root);
         return data;
     }
+
+    DFSInOrder () {
+        const data = [];
+        const traverse = (node) => {
+            if (node.left) traverse(node.left);
+            data.push(node.value);
+            if (node.right) traverse(node.right);
+        }
+
+        traverse(this.root);
+        return data;
+    }
 }
 
 
 let tree = new BinarySearchTree();
-tree.insert(10)
-tree.insert(6)
-tree.insert(15)
-tree.insert(3)
-tree.insert(8)
-tree.insert(20)
+tree.insert(10);
+tree.insert(6);
+tree.insert(15);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
 console.log(tree.BFS());
 console.log(tree.DFSPreOrder());
 console.log(tree.DFSPostOder());
+console.log(tree.DFSInOrder());
